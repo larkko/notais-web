@@ -18,11 +18,25 @@ console.log('Notais v. 0.0.1');
 
 const store = createStore(rootReducer);
 
-const App = props => {
-  return (
-    <Instrument {...props}/>
-  );
-};
+class App extends React.Component {
+ 
+  constructor(props) {
+    super(props);
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    this.audioContext = new AudioContext();
+  }
+
+  componentWillUnmount() {
+    this.audioContext.close();
+  }
+
+  render() {
+    return (
+      <Instrument {...this.props}
+                  audioContext={this.audioContext}/>
+    );
+  }
+}
 
 const mapStateToProps = state => {
   return {...state};
