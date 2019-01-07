@@ -13,6 +13,7 @@ import {
   releaseKeyboardKey
 } from './actions/keyboard';
 import Instrument from './views/instrument';
+import { backgroundColor } from './style/values';
 
 console.log('Notais v. 0.0.1');
 
@@ -32,8 +33,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <Instrument {...this.props}
-                  audioContext={this.audioContext}/>
+      <div style={{
+        width: '100vw',
+        height: '100vh',
+        backgroundColor: backgroundColor
+      }}>
+        <Instrument {...this.props}
+                    audioContext={this.audioContext}/>
+      </div>
     );
   }
 }

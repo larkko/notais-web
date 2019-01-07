@@ -40,9 +40,11 @@ class Instrument extends React.Component {
 
   render() {
     return (
-      <Keyboard {...this.props.keyboard}
-                pressKeyboardKey={this.props.pressKeyboardKey}
-                releaseKeyboardKey={this.props.releaseKeyboardKey}/>
+      <div>
+        <Keyboard {...this.props.keyboard}
+                  pressKeyboardKey={this.props.pressKeyboardKey}
+                  releaseKeyboardKey={this.props.releaseKeyboardKey}/>
+      </div>
     );
   }
 }

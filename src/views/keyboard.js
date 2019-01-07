@@ -12,7 +12,8 @@ const Keyboard = props => {
   return(  
     <div style={{
         display: 'flex',
-        height: '200px'
+        height: '200px',
+        width: '100%'
       }}>
       {keys.map(key =>
         <KeyboardKey onPress={() => pressKeyboardKey({
