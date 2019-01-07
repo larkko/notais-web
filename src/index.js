@@ -36,6 +36,8 @@ class App extends React.Component {
       <div style={{
         width: '100vw',
         height: '100vh',
+        padding: '1em',
+        boxSizing: 'border-box',
         backgroundColor: backgroundColor
       }}>
         <Instrument {...this.props}
