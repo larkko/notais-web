@@ -51,6 +51,10 @@ class InstrumentController {
     }
   }
 
+  setIndexToFrequency(indexToFrequency) {
+    this.indexToFrequency = indexToFrequency;
+  }
+
 }
 
 export default InstrumentController;
