@@ -21,7 +21,9 @@ const EqualTemperament = props => {
 
   const setStepsPerTave = event => {
     const stepsPerTave = Number(event.target.value);
-    setEqualTemperament({...tuning, stepsPerTave});
+    if(stepsPerTave > 0 && Number.isInteger(stepsPerTave)) {
+      setEqualTemperament({...tuning, stepsPerTave});
+    }
   };
 
   const setTaveInterval = event => {
