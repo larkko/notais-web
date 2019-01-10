@@ -14,7 +14,9 @@ const EqualTemperament = props => {
 
   const setBaseFrequency = event => {
     const baseFrequency = Number(event.target.value);
-    setEqualTemperament({...tuning, baseFrequency});
+    if(baseFrequency > 0) {
+      setEqualTemperament({...tuning, baseFrequency});
+    }
   };
 
   const setStepsPerTave = event => {
