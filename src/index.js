@@ -12,6 +12,9 @@ import {
   ReleaseKeyboardKey,
   releaseKeyboardKey
 } from './actions/keyboard';
+import {
+  setTuning
+} from './actions/tuning';
 import Instrument from './views/instrument';
 import { backgroundColor } from './style/values';
 
@@ -56,7 +59,8 @@ const mapDispatchToProps = dispatch => {
     pressKeyboardKey: ({index, velocity}) => {
       return dispatch(pressKeyboardKey({index, velocity}))
     },
-    releaseKeyboardKey: index => dispatch(releaseKeyboardKey(index))
+    releaseKeyboardKey: index => dispatch(releaseKeyboardKey(index)),
+    setTuning: tuning => dispatch(setTuning(tuning))
   };
 };
 

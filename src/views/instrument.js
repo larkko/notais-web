@@ -2,14 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Keyboard from './keyboard';
 import InstrumentController from '../controllers/instrumentcontroller';
+import Tuning from './tuning';
+import { tuningToFrequencyFunction } from '../model/tuning';
 
 class Instrument extends React.Component {
 
   constructor(props) {
     super(props);
-    const { audioContext } = props;
-    /*Use 12EDO as a tuning function*/
-    const indexToFrequency = index => 440.0 * Math.pow(Math.pow(2, 1/12.0), index);
+    const {
+      audioContext,
+      setTuning,
+      tuning
+    } = props;
+    const indexToFrequency = tuningToFrequencyFunction(tuning);
     
     /*Handles generating audio from presses.*/
     this.instrumentController = new InstrumentController({
@@ -36,6 +41,9 @@ class Instrument extends React.Component {
         }
       });
     });
+    this.instrumentController.setIndexToFrequency(
+      tuningToFrequencyFunction(this.props.tuning)
+    );
   }
 
   render() {
@@ -45,6 +53,8 @@ class Instrument extends React.Component {
         width: '100%',
         height: '100%'
       }}>
+        <Tuning tuning={this.props.tuning}
+                setTuning={this.props.setTuning}/>
         <div style={{
                /*Anchor the keyboard at the bottom of the container*/
                position: 'absolute',
