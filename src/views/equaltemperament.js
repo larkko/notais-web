@@ -13,17 +13,17 @@ const EqualTemperament = props => {
   } = props;
 
   const setBaseFrequency = event => {
-    const baseFrequency = event.target.value;
+    const baseFrequency = Number(event.target.value);
     setEqualTemperament({...tuning, baseFrequency});
   };
 
   const setStepsPerTave = event => {
-    const stepsPerTave = event.target.value;
+    const stepsPerTave = Number(event.target.value);
     setEqualTemperament({...tuning, stepsPerTave});
   };
 
   const setTaveInterval = event => {
-    const taveInterval = event.target.value;
+    const taveInterval = Number(event.target.value);
     setEqualTemperament({...tuning, taveInterval});
   };
 
