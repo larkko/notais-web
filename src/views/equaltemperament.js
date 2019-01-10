@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {
   Typography,
-  TextField
+  TextField,
+  InputAdornment
 } from '@material-ui/core';
 
 const EqualTemperament = props => {
@@ -36,7 +37,11 @@ const EqualTemperament = props => {
                  type="number"
                  margin="normal"
                  variant="outlined"
-                 onChange={setBaseFrequency}/>
+                 onChange={setBaseFrequency}
+                 InputProps={{
+                   endAdornment:
+                     <InputAdornment position="end">Hz</InputAdornment>
+                 }}/>
       <TextField label="Steps per 'tave"
                  value={tuning.stepsPerTave}
                  type="number"
