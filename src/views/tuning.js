@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import EqualTemperament from './equaltemperament';
+import {
+  Typography
+} from '@material-ui/core';
 
 const Tuning = props => {
   const {
@@ -12,7 +15,7 @@ const Tuning = props => {
   };
   return (
     <>
-      <h1>Tuning</h1>
+      <Typography variant="display1">Tuning</Typography>
       {(tuning.type === 'EQUAL_TEMPERAMENT')
         ? <>
             <EqualTemperament tuning={tuning}

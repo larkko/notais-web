@@ -28,7 +28,7 @@ const EqualTemperament = props => {
 
   return (
     <>
-      <Typography variant="subheading">
+      <Typography variant="headline">
         Equal temperament
       </Typography>
       <TextField label="Base frequency"
