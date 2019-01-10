@@ -28,7 +28,9 @@ const EqualTemperament = props => {
 
   const setTaveInterval = event => {
     const taveInterval = Number(event.target.value);
-    setEqualTemperament({...tuning, taveInterval});
+    if(taveInterval >= 1) {
+      setEqualTemperament({...tuning, taveInterval});
+    }
   };
 
   return (
