@@ -5,6 +5,7 @@ import {
   TextField,
   InputAdornment
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const EqualTemperament = props => {
   const {
@@ -62,6 +63,15 @@ const EqualTemperament = props => {
                  onChange={setTaveInterval}/>
     </>
   );
+};
+
+EqualTemperament.propTypes = {
+  setEqualTemperament: PropTypes.func.isRequired,
+  tuning: PropTypes.shape({
+    baseFrequency: PropTypes.number.isRequired,
+    stepsPerTave: PropTypes.number.isRequired,
+    taveInterval: PropTypes.number.isRequired,
+  }).isRequired
 };
 
 export default EqualTemperament;
