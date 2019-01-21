@@ -4,6 +4,7 @@ import Keyboard from './keyboard';
 import InstrumentController from '../controllers/instrumentcontroller';
 import Tuning from './tuning';
 import { tuningToFrequencyFunction } from '../model/tuning';
+import PropTypes from 'prop-types';
 
 class Instrument extends React.Component {
 
@@ -69,6 +70,17 @@ class Instrument extends React.Component {
     );
   }
 }
+
+Instrument.propTypes = {
+  audioContext: PropTypes.object.isRequired,
+  keyboard: PropTypes.shape({
+    keys: PropTypes.arrayOf(PropTypes.shape({
+      index: PropTypes.number.isRequired,
+      velocity: PropTypes.number.isRequired,
+    })).isRequired
+  }).isRequired,
+  ...Tuning.propTypes
+};
 
 export default Instrument;
 
