@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import {
   activeColor,
   secondaryBackgroundColor,
@@ -33,6 +34,12 @@ const KeyboardKey = props => {
          }}>
     </div>
   );
+};
+
+KeyboardKey.propTypes = {
+  onPress: PropTypes.func,
+  onRelease: PropTypes.func,
+  velocity: PropTypes.number
 };
 
 export default KeyboardKey;
