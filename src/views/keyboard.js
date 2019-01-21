@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import KeyboardKey from './keyboardkey';
 import { range } from '../util';
+import PropTypes from 'prop-types';
 
 const Keyboard = props => {
   const {
@@ -26,6 +27,15 @@ const Keyboard = props => {
       )}
     </div>
   );
+};
+
+Keyboard.propTypes = {
+  keys: PropTypes.arrayOf(PropTypes.shape({
+    index: PropTypes.number.isRequired,
+    velocity: PropTypes.number
+  })).isRequired,
+  pressKeyboardKey: PropTypes.func.isRequired,
+  releaseKeyboardKey: PropTypes.func.isRequired
 };
 
 export default Keyboard;
