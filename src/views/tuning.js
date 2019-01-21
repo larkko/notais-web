@@ -4,6 +4,7 @@ import EqualTemperament from './equaltemperament';
 import {
   Typography
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const Tuning = props => {
   const {
@@ -24,6 +25,11 @@ const Tuning = props => {
         : 'Unrecognized tuning'}
     </>
   );
+};
+
+Tuning.propTypes = {
+  setTuning: PropTypes.func.isRequired,
+  tuning: PropTypes.object.isRequired
 };
 
 export default Tuning;
