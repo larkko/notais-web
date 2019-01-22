@@ -28,6 +28,7 @@ class App extends React.Component {
     super(props);
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     this.audioContext = new AudioContext();
+    this.afterDelay = (func, ms) => setTimeout(func, ms);
   }
 
   componentWillUnmount() {
@@ -44,7 +45,8 @@ class App extends React.Component {
         backgroundColor: backgroundColor
       }}>
         <Instrument {...this.props}
-                    audioContext={this.audioContext}/>
+                    audioContext={this.audioContext}
+                    afterDelay={this.afterDelay}/>
       </div>
     );
   }

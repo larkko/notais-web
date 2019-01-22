@@ -13,14 +13,16 @@ class Instrument extends React.Component {
     const {
       audioContext,
       setTuning,
-      tuning
+      tuning,
+      afterDelay
     } = props;
     const indexToFrequency = tuningToFrequencyFunction(tuning);
     
     /*Handles generating audio from presses.*/
     this.instrumentController = new InstrumentController({
       audioContext,
-      indexToFrequency
+      indexToFrequency,
+      afterDelay
     });
   }
 
@@ -73,6 +75,7 @@ class Instrument extends React.Component {
 
 Instrument.propTypes = {
   audioContext: PropTypes.object.isRequired,
+  afterDelay: PropTypes.func.isRequired,
   keyboard: PropTypes.shape({
     keys: PropTypes.arrayOf(PropTypes.shape({
       index: PropTypes.number.isRequired,
