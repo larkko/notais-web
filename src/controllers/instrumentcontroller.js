@@ -16,7 +16,6 @@ class InstrumentController {
 
   dispose() {
     const {
-      audioContext,
       nodes
     } = this;
     nodes.forEach(node => {

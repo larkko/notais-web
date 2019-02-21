@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Keyboard from './keyboard';
 import InstrumentController from '../controllers/instrumentcontroller';
 import Tuning from './tuning';
@@ -12,7 +11,6 @@ class Instrument extends React.Component {
     super(props);
     const {
       audioContext,
-      setTuning,
       tuning,
       afterDelay
     } = props;

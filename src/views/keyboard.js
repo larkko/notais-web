@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import KeyboardKey from './keyboardkey';
-import { range } from '../util';
 import PropTypes from 'prop-types';
 
 const Keyboard = props => {

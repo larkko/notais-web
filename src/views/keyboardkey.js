@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {
   activeColor,
@@ -21,7 +20,7 @@ const KeyboardKey = props => {
          onMouseUp={onRelease}
          onMouseOut={() => {
             if(isPressed) {
-              onRelease()
+              onRelease();
             }
          }}
          style={{

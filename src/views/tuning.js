@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import EqualTemperament from './equaltemperament';
 import {
   Typography
@@ -20,7 +19,7 @@ const Tuning = props => {
       {(tuning.type === 'EQUAL_TEMPERAMENT')
         ? <>
             <EqualTemperament tuning={tuning}
-                              setEqualTemperament={setTuning}/>
+                              setEqualTemperament={setEqualTemperament}/>
           </>
         : 'Unrecognized tuning'}
     </>

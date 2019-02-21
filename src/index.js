@@ -7,9 +7,7 @@ import {
 } from 'react-redux';
 import rootReducer from './reducers';
 import {
-  PressKeyboardKey,
   pressKeyboardKey,
-  ReleaseKeyboardKey,
   releaseKeyboardKey
 } from './actions/keyboard';
 import {
@@ -17,8 +15,6 @@ import {
 } from './actions/tuning';
 import Instrument from './views/instrument';
 import { backgroundColor } from './style/values';
-
-console.log('Notais v. 0.0.1');
 
 const store = createStore(rootReducer);
 
@@ -59,7 +55,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     pressKeyboardKey: ({index, velocity}) => {
-      return dispatch(pressKeyboardKey({index, velocity}))
+      return dispatch(pressKeyboardKey({index, velocity}));
     },
     releaseKeyboardKey: index => dispatch(releaseKeyboardKey(index)),
     setTuning: tuning => dispatch(setTuning(tuning))
