@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "npx mocha --require @babel/register --recursive",
-    "build": "webpack"
+    "build": "webpack",
+    "lint": "npx eslint src test"
   },
   "repository": {
     "type": "git",
