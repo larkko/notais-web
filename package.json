@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "test",
+    "test": "npx mocha --require @babel/register --recursive",
     "build": "webpack"
   },
   "repository": {
@@ -32,10 +32,14 @@
     "webpack-cli": "^3.1.2"
   },
   "devDependencies": {
+    "@babel/register": "^7.0.0",
     "babel-eslint": "^10.0.1",
+    "chai": "^4.2.0",
     "eslint": "^5.14.1",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4"
+    "eslint-plugin-react": "^7.12.4",
+    "mocha": "^6.0.0",
+    "sinon": "^7.2.4"
   }
 }
