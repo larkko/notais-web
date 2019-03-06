@@ -62,6 +62,9 @@ class InstrumentController {
       gain.connect(this.audioContext.destination);
       oscillator.frequency.value = this.indexToFrequency(index);
       gain.gain.value = 0.0;
+      if(this.oscillatorType) {
+        oscillator.type = this.oscillatorType;
+      }
       oscillator.start();
       gain.gain.linearRampToValueAtTime(maxGain, this.audioContext.currentTime + rampTime);
       this.nodes = [...this.nodes, {oscillator, gain, index, velocity}];
@@ -70,6 +73,19 @@ class InstrumentController {
 
   setIndexToFrequency(indexToFrequency) {
     this.indexToFrequency = indexToFrequency;
+  }
+
+  setAudioSource(audioSource) {
+    const type = audioSource.oscillator.type;
+    /*This is the format in which the web audio API expects these to be.*/
+    const asNodeSetting = (type === 'SINE') ? 'sine'
+                        : (type === 'SQUARE') ? 'square'
+                        : (type === 'SAW') ? 'sawtooth'
+                        : (type === 'TRIANGLE') ? 'triangle'
+                        : undefined;
+    if(asNodeSetting) {
+      this.oscillatorType = asNodeSetting;
+    }
   }
 
 }
