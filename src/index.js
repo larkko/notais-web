@@ -13,6 +13,9 @@ import {
 import {
   setTuning
 } from './actions/tuning';
+import {
+  setAudioSource
+} from './actions/audiosource';
 import Instrument from './views/instrument';
 import { backgroundColor } from './style/values';
 import InstrumentController from './controllers/instrumentcontroller';
@@ -74,7 +77,8 @@ const mapDispatchToProps = dispatch => {
       return dispatch(pressKeyboardKey({index, velocity}));
     },
     releaseKeyboardKey: index => dispatch(releaseKeyboardKey(index)),
-    setTuning: tuning => dispatch(setTuning(tuning))
+    setTuning: tuning => dispatch(setTuning(tuning)),
+    setAudioSource: audioSource => dispatch(setAudioSource(audioSource))
   };
 };
 

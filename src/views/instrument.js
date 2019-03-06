@@ -1,6 +1,7 @@
 import React from 'react';
 import Keyboard from './keyboard';
 import Tuning from './tuning';
+import AudioSource from './audiosource';
 import { tuningToFrequencyFunction } from '../model/tuning';
 import PropTypes from 'prop-types';
 
@@ -24,6 +25,7 @@ class Instrument extends React.Component {
     controller.setIndexToFrequency(
       tuningToFrequencyFunction(this.props.tuning)
     );
+    controller.setAudioSource(this.props.audioSource);
   }
 
   render() {
@@ -35,6 +37,8 @@ class Instrument extends React.Component {
       }}>
         <Tuning tuning={this.props.tuning}
                 setTuning={this.props.setTuning}/>
+        <AudioSource audioSource={this.props.audioSource}
+                     setAudioSource={this.props.setAudioSource}/>
         <div style={{
                /*Anchor the keyboard at the bottom of the container*/
                position: 'absolute',
@@ -58,7 +62,8 @@ Instrument.propTypes = {
       velocity: PropTypes.number.isRequired,
     })).isRequired
   }).isRequired,
-  ...Tuning.propTypes
+  ...Tuning.propTypes,
+  ...AudioSource.propTypes
 };
 
 export default Instrument;
