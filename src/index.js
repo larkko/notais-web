@@ -15,6 +15,9 @@ import {
 } from './actions/tuning';
 import Instrument from './views/instrument';
 import { backgroundColor } from './style/values';
+import InstrumentController from './controllers/instrumentcontroller';
+import { tuningToFrequencyFunction } from './model/tuning';
+import PropTypes from 'prop-types';
 
 const store = createStore(rootReducer);
 
@@ -24,10 +27,18 @@ class App extends React.Component {
     super(props);
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     this.audioContext = new AudioContext();
-    this.afterDelay = (func, ms) => setTimeout(func, ms);
+    const afterDelay = (func, ms) => setTimeout(func, ms);
+    const indexToFrequency = tuningToFrequencyFunction(props.tuning);
+    /*Handles generating audio from presses.*/
+    this.instrumentController = new InstrumentController({
+      audioContext: this.audioContext,
+      indexToFrequency,
+      afterDelay
+    });
   }
 
   componentWillUnmount() {
+    this.instrumentController.dispose();
     this.audioContext.close();
   }
 
@@ -42,11 +53,16 @@ class App extends React.Component {
       }}>
         <Instrument {...this.props}
                     audioContext={this.audioContext}
-                    afterDelay={this.afterDelay}/>
+                    afterDelay={this.afterDelay}
+                    instrumentController={this.instrumentController}/>
       </div>
     );
   }
 }
+
+App.propTypes = {
+  tuning: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => {
   return {...state};

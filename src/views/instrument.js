@@ -1,48 +1,27 @@
 import React from 'react';
 import Keyboard from './keyboard';
-import InstrumentController from '../controllers/instrumentcontroller';
 import Tuning from './tuning';
 import { tuningToFrequencyFunction } from '../model/tuning';
 import PropTypes from 'prop-types';
 
 class Instrument extends React.Component {
 
-  constructor(props) {
-    super(props);
-    const {
-      audioContext,
-      tuning,
-      afterDelay
-    } = props;
-    const indexToFrequency = tuningToFrequencyFunction(tuning);
-    
-    /*Handles generating audio from presses.*/
-    this.instrumentController = new InstrumentController({
-      audioContext,
-      indexToFrequency,
-      afterDelay
-    });
-  }
-
-  componentWillUnmount() {
-    this.instrumentController.dispose();
-  }
-
   componentDidUpdate(prevProps) {
     const keys = this.props.keyboard.keys;
+    const controller = this.props.instrumentController;
     const prevKeys = prevProps.keyboard.keys;
     keys.forEach(key => {
       prevKeys.forEach(prevKey => {
         /*Something has changed for this key*/
         if(key.index === prevKey.index && key.velocity !== prevKey.velocity) {
-          this.instrumentController.set({
+          controller.set({
             index: key.index,
             velocity: key.velocity
           });
         }
       });
     });
-    this.instrumentController.setIndexToFrequency(
+    controller.setIndexToFrequency(
       tuningToFrequencyFunction(this.props.tuning)
     );
   }
@@ -72,8 +51,7 @@ class Instrument extends React.Component {
 }
 
 Instrument.propTypes = {
-  audioContext: PropTypes.object.isRequired,
-  afterDelay: PropTypes.func.isRequired,
+  instrumentController: PropTypes.object.isRequired,
   keyboard: PropTypes.shape({
     keys: PropTypes.arrayOf(PropTypes.shape({
       index: PropTypes.number.isRequired,
